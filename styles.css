@@ -11,10 +11,10 @@ body {
 .profile-card {
     background-color: #31363F;
    
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
     padding: 20px;
-    width: 300px;
+    width: 308px;
     color: white;
 }
 
