@@ -18,8 +18,59 @@
             <a href="https://www.linkedin.com/in/ankit-kumar-868341260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="button">LinkedIn</a>
             <a href="https://x.com/Ankitkumar72177?t=0_K6M_8GE5yWAj-eonkhJA&s=09" class="button">Twitter (X)</a>
             <a href="https://www.instagram.com/ankit_kumar72177?utm_source=qr&igsh=MThoNzBuc2ZhN2Nnbg==" class="button">Instagram</a>
-            <a href="https://t.me/Ankitkumarnsut" class="button">Telegram </a>
+            <a href="https://t.me/Ankitkumarnsut" class="button">Telegram</a>
+            <button class="button qr-button" aria-haspopup="dialog" aria-controls="qr-overlay">QR Code</button>
+        </div>
+        
+        <div id="qr-overlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="qr-title">
+            <div class="overlay-content">
+                <span class="close-btn" aria-label="Close QR code popup">&times;</span>
+                <h2 id="qr-title" class="qr-title">Ankit Kumar's QR Code</h2>
+                <img src="ankitkumar_profilecard_qr.png" alt="Ankit Kumar QR Code" class="qr-image">
+            </div>
         </div>
     </div>
+    
+    <script>
+        // QR code popup functionality
+        const qrButton = document.querySelector('.qr-button');
+        const qrOverlay = document.getElementById('qr-overlay');
+        const closeBtn = document.querySelector('.close-btn');
+        
+        // Show QR code overlay when QR button is clicked
+        qrButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent any default action
+            qrOverlay.style.display = 'flex';
+            // Add aria attributes for accessibility
+            qrOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+        });
+        
+        // Hide QR code overlay when close button is clicked
+        closeBtn.addEventListener('click', () => {
+            hideOverlay();
+        });
+        
+        // Close the overlay if clicked outside of the content
+        qrOverlay.addEventListener('click', (e) => {
+            if (e.target === qrOverlay) {
+                hideOverlay();
+            }
+        });
+        
+        // Also close on escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && qrOverlay.style.display === 'flex') {
+                hideOverlay();
+            }
+        });
+        
+        // Function to hide overlay
+        function hideOverlay() {
+            qrOverlay.style.display = 'none';
+            qrOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    </script>
 </body>
 </html>
