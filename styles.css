@@ -54,16 +54,14 @@ h1 {
 .social-links {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-top: 20px;
-    width: 100%;
 }
 
 .button {
     background: linear-gradient(45deg, #2e3440, #3b4252);
     color: #d8dee9;
-    padding: 12px 24px;
+    padding: 12px;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 400;
@@ -71,51 +69,13 @@ h1 {
     transition: all 0.3s ease;
     border: 1px solid rgba(64, 87, 121, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-    width: 80%;
-    max-width: 250px;
-    text-align: center;
-    margin: 0 auto;
 }
-
-.button i {
-    font-size: 1.1em;
-    width: 1.2em;
-    text-align: center;
-    transition: transform 0.3s ease, color 0.3s ease;
-    flex-shrink: 0;
-}
-
-.button:hover i {
-    transform: scale(1.2);
-}
-
-/* Specific icon colors on hover */
-.button:hover .fa-whatsapp { color: #25D366; }
-.button:hover .fa-github { color: #f0f6fc; }
-.button:hover .fa-linkedin { color: #0a66c2; }
-.button:hover .fa-x-twitter { color: #000000; }
-.button:hover .fa-instagram { 
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.button:hover .fa-telegram { color: #0088cc; }
-.button:hover .fa-qrcode { color: #5e81ac; }
 
 .button:hover {
     background: linear-gradient(45deg, #3b4252, #434c6e);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border-color: #5e81ac;
-    padding-right: 24px;
-    padding-left: 24px;
 }
 
 /* QR code button styling */
