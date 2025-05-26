@@ -61,7 +61,7 @@ h1 {
 .button {
     background: linear-gradient(45deg, #2e3440, #3b4252);
     color: #d8dee9;
-    padding: 12px;
+    padding: 12px 20px 12px 15px;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 400;
@@ -69,13 +69,45 @@ h1 {
     transition: all 0.3s ease;
     border: 1px solid rgba(64, 87, 121, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
 }
+
+.button i {
+    font-size: 1.1em;
+    width: 1.2em;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.button:hover i {
+    transform: scale(1.2);
+}
+
+/* Specific icon colors on hover */
+.button:hover .fa-whatsapp { color: #25D366; }
+.button:hover .fa-github { color: #f0f6fc; }
+.button:hover .fa-linkedin { color: #0a66c2; }
+.button:hover .fa-x-twitter { color: #000000; }
+.button:hover .fa-instagram { 
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.button:hover .fa-telegram { color: #0088cc; }
+.button:hover .fa-qrcode { color: #5e81ac; }
 
 .button:hover {
     background: linear-gradient(45deg, #3b4252, #434c6e);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border-color: #5e81ac;
+    padding-right: 25px;
 }
 
 /* QR code button styling */
@@ -113,50 +145,88 @@ h1 {
 }
 
 .overlay-content {
-    background-color: rgba(46, 52, 64, 0.95);
-    padding: 25px;
-    border-radius: 15px;
+    background: linear-gradient(145deg, #2e3440, #3b4252);
+    padding: 30px;
+    border-radius: 20px;
     max-width: 90%;
+    width: 320px;
     position: relative;
     border: 1px solid #5e81ac;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px rgba(94, 129, 172, 0.3);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.overlay-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5e81ac, #88c0d0, #5e81ac);
+    background-size: 200% 100%;
+    animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .qr-title {
     color: #e4e8f0;
-    font-size: 18px;
-    margin: 5px 0 15px;
+    font-size: 20px;
+    margin: 15px 0 20px;
     text-align: center;
     font-weight: 500;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.qr-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #5e81ac, transparent);
 }
 
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
+    top: 12px;
+    right: 12px;
+    font-size: 24px;
     line-height: 1;
     cursor: pointer;
     color: #d8dee9;
     transition: all 0.3s ease;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background: rgba(46, 52, 64, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(136, 192, 208, 0.3);
     z-index: 1010;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn:hover {
-    color: #bf616a;
-    background-color: rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
+    color: #fff;
+    background: #bf616a;
+    transform: scale(1.1) rotate(90deg);
+    border-color: #bf616a;
+    box-shadow: 0 0 15px rgba(191, 97, 106, 0.6);
 }
 
 .qr-image {
@@ -165,15 +235,32 @@ h1 {
     width: 100%;
     height: auto;
     display: block;
-    margin: 10px auto 5px;
-    border: 3px solid #5e81ac;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    margin: 15px auto 5px;
+    border: 1px solid rgba(94, 129, 172, 0.5);
+    border-radius: 12px;
+    background: #2e3440;
+    padding: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.qr-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(94, 129, 172, 0.1) 0%, transparent 50%, rgba(94, 129, 172, 0.1) 100%);
+    pointer-events: none;
 }
 
 .overlay[style*="display: flex"] .overlay-content {
-    transform: scale(1);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    transition-delay: 0.1s;
 }
 
 /* Add animation for QR code appearance */

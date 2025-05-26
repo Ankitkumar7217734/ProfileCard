@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Favicon settings for various platforms -->
     <link rel="icon" href="2023-04-21 204913~3 Copy-modified.png" type="image/png">
     <link rel="shortcut icon" href="2023-04-21 204913~3 Copy-modified.png" type="image/png">
@@ -17,13 +19,13 @@
         <!-- <p class="location">London, United Kingdom</p>
         <p class="bio">"Front-end developer and avid reader."</p> -->
         <div class="social-links">
-            <a href="https://wa.me/qr/R3WD6POP3GJVD1" class="button">Whatsapp</a>
-            <a href="https://github.com" class="button">GitHub</a>
-            <a href="https://www.linkedin.com/in/ankit-kumar-868341260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="button">LinkedIn</a>
-            <a href="https://x.com/Ankitkumar72177?t=0_K6M_8GE5yWAj-eonkhJA&s=09" class="button">Twitter (X)</a>
-            <a href="https://www.instagram.com/ankit_kumar72177?utm_source=qr&igsh=MThoNzBuc2ZhN2Nnbg==" class="button">Instagram</a>
-            <a href="https://t.me/Ankitkumarnsut" class="button">Telegram</a>
-            <button class="button qr-button" aria-haspopup="dialog" aria-controls="qr-overlay">QR Code</button>
+            <a href="https://wa.me/qr/R3WD6POP3GJVD1" class="button"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://github.com/Ankitkumar72177" class="button"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/ankit-kumar-868341260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="button"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://x.com/Ankitkumar72177?t=0_K6M_8GE5yWAj-eonkhJA&s=09" class="button"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+            <a href="https://www.instagram.com/ankit_kumar72177?utm_source=qr&igsh=MThoNzBuc2ZhN2Nnbg==" class="button"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://t.me/Ankitkumarnsut" class="button"><i class="fab fa-telegram"></i> Telegram</a>
+            <button class="button qr-button" aria-haspopup="dialog" aria-controls="qr-overlay"><i class="fas fa-qrcode"></i> QR Code</button>
         </div>
         
         <div id="qr-overlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="qr-title">
@@ -40,18 +42,33 @@
         const qrButton = document.querySelector('.qr-button');
         const qrOverlay = document.getElementById('qr-overlay');
         const closeBtn = document.querySelector('.close-btn');
+        let isAnimating = false;
         
         // Show QR code overlay when QR button is clicked
         qrButton.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent any default action
+            e.preventDefault();
+            if (isAnimating) return;
+            
+            isAnimating = true;
             qrOverlay.style.display = 'flex';
-            // Add aria attributes for accessibility
             qrOverlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+            document.body.style.overflow = 'hidden';
+            
+            // Force reflow to trigger the animation
+            void qrOverlay.offsetHeight;
+            
+            // Add the active class to trigger the animation
+            qrOverlay.style.opacity = '1';
+            
+            // Reset animation state after it completes
+            setTimeout(() => {
+                isAnimating = false;
+            }, 400);
         });
         
         // Hide QR code overlay when close button is clicked
-        closeBtn.addEventListener('click', () => {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             hideOverlay();
         });
         
@@ -64,16 +81,26 @@
         
         // Also close on escape key press
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && qrOverlay.style.display === 'flex') {
+            if (e.key === 'Escape' && qrOverlay.style.display === 'flex' && !isAnimating) {
                 hideOverlay();
             }
         });
         
-        // Function to hide overlay
+        // Function to hide overlay with animation
         function hideOverlay() {
-            qrOverlay.style.display = 'none';
-            qrOverlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = ''; // Restore scrolling
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            // Start the hide animation
+            qrOverlay.style.opacity = '0';
+            
+            // Wait for the animation to complete before hiding the element
+            setTimeout(() => {
+                qrOverlay.style.display = 'none';
+                qrOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                isAnimating = false;
+            }, 300);
         }
     </script>
 </body>
