@@ -14,8 +14,8 @@ body {
     border: 1px solid rgba(66, 66, 86, 0.4);
     border-radius: 20px;
     text-align: center;
-    padding: 20px;
-    width: 300px;
+    padding: 30px 25px;
+    width: 350px;
     color: #d8dee9;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
