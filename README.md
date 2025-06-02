@@ -10,9 +10,7 @@ A modern, responsive profile card with social media links and a QR code feature.
 - **Modern UI**: Clean and professional design with smooth animations
 - **Dark Theme**: Easy on the eyes with a dark color scheme
 
-## Preview
 
-![Profile Card Preview](https://raw.githubusercontent.com/Ankitkumar72177/ProfileCard/main/2023-04-21%20204913~3%20Copy-modified.png)
 
 ## Technologies Used
 
@@ -42,6 +40,33 @@ A modern, responsive profile card with social media links and a QR code feature.
 
 3. Open `index.html` in your web browser or use a local server.
 
+## Installation Instructions
+
+### Clone the Repository
+
+1. Open your terminal or command prompt.
+2. Run the following command to clone the repository:
+   ```bash
+   git clone https://github.com/Ankitkumar72177/ProfileCard.git
+   ```
+
+### Open the Project
+
+1. Navigate to the project directory:
+   ```bash
+   cd ProfileCard
+   ```
+2. Open the `index.html` file in your browser or use a local server.
+
+## Browser Compatibility
+
+This project is compatible with the following browsers:
+
+- Google Chrome (latest version)
+- Mozilla Firefox (latest version)
+- Microsoft Edge (latest version)
+- Safari (latest version)
+
 ## Customization
 
 ### Update Profile Information
@@ -68,6 +93,12 @@ Edit the `styles.css` file to customize colors, spacing, and animations to match
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+- **Font Awesome**: For providing the social media icons.
+- **GitHub**: For hosting the repository.
+- **Open Source Community**: For inspiration and resources.
 
 ## Contributing
 
