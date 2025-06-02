@@ -1,34 +1,201 @@
+/* Modern CSS Reset and Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Variables */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #16213e;
+    --card-bg: rgba(26, 26, 46, 0.8);
+    --text-primary: #e4e8f0;
+    --text-secondary: #8294aa;
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #06b6d4;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-full: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 body {
-    background-color: #121212;
-    background-image: linear-gradient(160deg, #121212, #1e2030, #252945);
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
+/* Animated background elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { 
+        background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    }
+    50% { 
+        background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 60% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+    }
+}
+
+/* Profile Card Styles */
 .profile-card {
-    background-color: rgba(30, 32, 48, 0.65);
-    border: 1px solid rgba(66, 66, 86, 0.4);
-    border-radius: 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl) var(--space-xl);
+    width: min(400px, 90vw);
     text-align: center;
-    padding: 30px 25px;
-    width: 350px;
-    color: #d8dee9;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    color: var(--text-primary);
+    box-shadow: 
+        0 25px 50px -12px var(--glass-shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    animation: cardFloat 6s ease-in-out infinite;
 }
 
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--accent-primary), 
+        var(--accent-secondary), 
+        var(--accent-tertiary),
+        var(--accent-secondary), 
+        var(--accent-primary)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 35px 70px -12px var(--glass-shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Profile Picture Styles */
 .profile-pic {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
+    border-radius: var(--radius-full);
     object-fit: cover;
-    margin: 10px auto;
-    border: 3px solid #405779;
-    box-shadow: 0 0 20px rgba(38, 53, 84, 0.6);
+    margin: var(--space-md) auto var(--space-lg);
+    border: 3px solid transparent;
+    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary)) border-box;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 4px rgba(255, 255, 255, 0.05),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-bounce);
+    position: relative;
+    z-index: 1;
+}
+
+.profile-pic::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+    background-size: 200% 200%;
+    animation: borderRotate 4s linear infinite;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.profile-pic:hover::before {
+    opacity: 1;
+}
+
+@keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-pic:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 4px rgba(255, 255, 255, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
 h1 {
@@ -66,7 +233,7 @@ h1 {
     border-radius: 30px;
     font-weight: 400;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     border: 1px solid rgba(64, 87, 121, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -92,12 +259,48 @@ h1 {
     flex: 0 1 auto;
 }
 
+/* --- Enhanced button hover effect --- */
 .button:hover {
-    background: linear-gradient(45deg, #3b4252, #434c6e);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    border-color: #5e81ac;
+    background: linear-gradient(45deg, #5e81ac, #88c0d0);
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 16px 2px var(--accent-tertiary), 0 8px 24px rgba(0,0,0,0.25);
+    border-color: #88c0d0;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* --- Social button hover brand colors START (GitHub review) --- */
+.button.fa-whatsapp:hover, .button[href*="wa.me"]:hover {
+    background: #25D366;
+    color: #fff;
+    border-color: #25D366;
+}
+.button.fa-github:hover, .button[href*="github.com"]:hover {
+    background: #24292e;
+    color: #fff;
+    border-color: #24292e;
+}
+.button.fa-linkedin:hover, .button[href*="linkedin.com"]:hover {
+    background: #0A66C2;
+    color: #fff;
+    border-color: #0A66C2;
+}
+.button.fa-x-twitter:hover, .button[href*="x.com"]:hover, .button[href*="twitter.com"]:hover {
+    background: #1da1f2;
+    color: #fff;
+    border-color: #1da1f2;
+}
+.button.fa-instagram:hover, .button[href*="instagram.com"]:hover {
+    background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: #fff;
+    border-color: #d6249f;
+}
+.button.fa-telegram:hover, .button[href*="t.me"]:hover {
+    background: #0088cc;
+    color: #fff;
+    border-color: #0088cc;
+}
+/* --- Social button hover brand colors END (GitHub review) --- */
 
 /* QR code button styling */
 .qr-button {
