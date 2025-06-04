@@ -233,7 +233,7 @@ h1 {
     border-radius: 30px;
     font-weight: 400;
     letter-spacing: 1px;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.2s ease;
     border: 1px solid rgba(64, 87, 121, 0.4);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -266,7 +266,11 @@ h1 {
     transform: translateY(-3px) scale(1.04);
     box-shadow: 0 0 16px 2px var(--accent-tertiary), 0 8px 24px rgba(0,0,0,0.25);
     border-color: #88c0d0;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.2s ease;
+}
+
+.button:active {
+    transform: scale(0.9);
 }
 
 /* --- Social button hover brand colors START (GitHub review) --- */
@@ -464,4 +468,82 @@ h1 {
 
 .overlay[style*="display: flex"] .qr-image {
     animation: qr-pulse 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .profile-card {
+    min-width: 90%;
+    max-width: 400px;
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .social-links {
+    gap: 10px;
+  }
+  
+  .button {
+    min-width: 180px;
+    height: 44px;
+    font-size: 0.9rem;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-card {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .button {
+    min-width: 160px;
+    height: 40px;
+    font-size: 0.85rem;
+  }
+  
+  .qr-popup-content {
+    width: 85%;
+    padding: 15px;
+  }
+  
+  .qr-code {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .button {
+    min-width: 140px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
 }
