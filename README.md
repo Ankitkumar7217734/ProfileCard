@@ -90,13 +90,9 @@ Edit the `styles.css` file to customize colors, spacing, and animations to match
 - [Instagram](https://www.instagram.com/ankit_kumar72177)
 - [Telegram](https://t.me/Ankitkumarnsut)
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
-- **Font Awesome**: For providing the social media icons.
+- **Font Awesome**: For providing the social media icons. 
 - **GitHub**: For hosting the repository.
 - **Open Source Community**: For inspiration and resources.
 
