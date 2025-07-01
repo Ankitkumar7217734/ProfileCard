@@ -6,21 +6,21 @@
 }
 
 :root {
-    /* Color Variables */
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #1a1a2e;
-    --bg-tertiary: #16213e;
-    --card-bg: rgba(26, 26, 46, 0.8);
-    --text-primary: #e4e8f0;
-    --text-secondary: #8294aa;
-    --accent-primary: #6366f1;
-    --accent-secondary: #8b5cf6;
-    --accent-tertiary: #06b6d4;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
+    /* New Color Palette */
+    --bg-primary: #111827;
+    --bg-secondary: #1F2937;
+    --bg-tertiary: #374151;
+    --card-bg: rgba(31, 41, 55, 0.75);
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --accent-primary: #38BDF8; /* Light Blue */
+    --accent-secondary: #818CF8; /* Indigo */
+    --accent-tertiary: #A78BFA; /* Lavender */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
     --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --glass-shadow: rgba(0, 0, 0, 0.35);
     
     /* Spacing */
     --space-xs: 0.25rem;
@@ -39,7 +39,7 @@
     --radius-full: 50%;
     
     /* Transitions */
-    --transition-fast: 0.15s ease;
+    --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
     --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -48,7 +48,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     background-attachment: fixed;
     display: flex;
     justify-content: center;
@@ -69,9 +69,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, hsla(206, 94%, 60%, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, hsla(236, 92%, 78%, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 40% 40%, hsla(258, 92%, 78%, 0.08) 0%, transparent 40%);
     pointer-events: none;
     z-index: -1;
     animation: backgroundShift 20s ease-in-out infinite;
@@ -79,22 +79,22 @@ body::before {
 
 @keyframes backgroundShift {
     0%, 100% { 
-        background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+        background: radial-gradient(circle at 20% 80%, hsla(206, 94%, 60%, 0.1) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 20%, hsla(236, 92%, 78%, 0.1) 0%, transparent 40%),
+                    radial-gradient(circle at 40% 40%, hsla(258, 92%, 78%, 0.08) 0%, transparent 40%);
     }
     50% { 
-        background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 60% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 80% 20%, hsla(206, 94%, 60%, 0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 20% 80%, hsla(236, 92%, 78%, 0.1) 0%, transparent 40%),
+                    radial-gradient(circle at 60% 60%, hsla(258, 92%, 78%, 0.1) 0%, transparent 40%);
     }
 }
 
 /* Profile Card Styles */
 .profile-card {
     background: var(--card-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-2xl);
     padding: var(--space-2xl) var(--space-xl);
@@ -113,7 +113,7 @@ body::before {
 
 @keyframes cardFloat {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(0.5deg); }
+    50% { transform: translateY(-12px) rotate(0.5deg); }
 }
 
 .profile-card::before {
@@ -131,7 +131,7 @@ body::before {
         var(--accent-primary)
     );
     background-size: 200% 100%;
-    animation: gradientShift 3s ease infinite;
+    animation: gradientShift 4s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -141,7 +141,7 @@ body::before {
 }
 
 .profile-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
     box-shadow: 
         0 35px 70px -12px var(--glass-shadow),
         0 0 0 1px rgba(255, 255, 255, 0.1),
@@ -201,58 +201,57 @@ body::before {
 h1 {
     margin: 10px 0;
     font-size: 24px;
-    color: #e4e8f0;
-    text-shadow: 0 0 10px rgba(64, 87, 121, 0.6);
-    font-weight: 500;
-    letter-spacing: 1px;
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .location {
-    color: #8294aa;
+    color: var(--text-secondary);
     margin: 5px 0;
-    text-shadow: 0 0 5px rgba(64, 87, 121, 0.4);
+    text-shadow: 0 0 5px rgba(31, 41, 55, 0.5);
 }
 
 .bio {
     font-style: italic;
     margin: 10px 0;
+    color: var(--text-secondary);
 }
 
 .social-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .button {
-    background: linear-gradient(45deg, #2e3440, #3b4252);
-    color: #d8dee9;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
     padding: 12px;
     text-decoration: none;
     border-radius: 30px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    transition: all 0.2s ease;
-    border: 1px solid rgba(64, 87, 121, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.button {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
 }
 
 .button i {
-    width: 16px;
+    width: 18px;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
 .button span {
@@ -261,61 +260,69 @@ h1 {
 
 /* --- Enhanced button hover effect --- */
 .button:hover {
-    background: linear-gradient(45deg, #5e81ac, #88c0d0);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 20px 4px hsla(206, 94%, 60%, 0.2), 0 8px 24px rgba(0,0,0,0.2);
+    border-color: hsla(206, 94%, 60%, 0.5);
     color: #fff;
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 0 16px 2px var(--accent-tertiary), 0 8px 24px rgba(0,0,0,0.25);
-    border-color: #88c0d0;
-    transition: all 0.2s ease;
+    background: var(--accent-primary);
+    transition: all var(--transition-fast);
+}
+
+.button:hover i {
+    transform: scale(1.1);
 }
 
 .button:active {
-    transform: scale(0.9);
+    transform: scale(0.95);
 }
 
-/* --- Social button hover brand colors START (GitHub review) --- */
-.button.fa-whatsapp:hover, .button[href*="wa.me"]:hover {
+/* --- Social button hover brand colors START --- */
+.button[href*="wa.me"]:hover {
     background: #25D366;
-    color: #fff;
     border-color: #25D366;
+    box-shadow: 0 0 20px 4px hsla(145, 63%, 49%, 0.3);
 }
-.button.fa-github:hover, .button[href*="github.com"]:hover {
+.button[href*="github.com"]:hover {
     background: #24292e;
-    color: #fff;
     border-color: #24292e;
+    box-shadow: 0 0 20px 4px hsla(210, 8%, 15%, 0.3);
 }
-.button.fa-linkedin:hover, .button[href*="linkedin.com"]:hover {
+.button[href*="linkedin.com"]:hover {
     background: #0A66C2;
-    color: #fff;
     border-color: #0A66C2;
+    box-shadow: 0 0 20px 4px hsla(210, 91%, 40%, 0.3);
 }
-.button.fa-x-twitter:hover, .button[href*="x.com"]:hover, .button[href*="twitter.com"]:hover {
+.button[href*="x.com"]:hover, .button[href*="twitter.com"]:hover {
     background: #1da1f2;
-    color: #fff;
     border-color: #1da1f2;
+    box-shadow: 0 0 20px 4px hsla(203, 89%, 53%, 0.3);
 }
-.button.fa-instagram:hover, .button[href*="instagram.com"]:hover {
-    background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    color: #fff;
+.button[href*="instagram.com"]:hover {
+    background: #d6249f;
     border-color: #d6249f;
+    box-shadow: 0 0 20px 4px hsla(320, 74%, 50%, 0.3);
 }
-.button.fa-telegram:hover, .button[href*="t.me"]:hover {
+.button[href*="t.me"]:hover {
     background: #0088cc;
-    color: #fff;
     border-color: #0088cc;
+    box-shadow: 0 0 20px 4px hsla(199, 100%, 40%, 0.3);
 }
-/* --- Social button hover brand colors END (GitHub review) --- */
+/* --- Social button hover brand colors END --- */
 
 /* QR code button styling */
 .qr-button {
-    background: linear-gradient(45deg, #405779, #5e81ac);
+    background: linear-gradient(45deg, var(--accent-secondary), var(--accent-tertiary));
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
+    border: none;
+    color: #fff;
 }
 
 .qr-button:hover {
-    background: linear-gradient(45deg, #5e81ac, #88c0d0);
-    border-color: #88c0d0;
+    background: linear-gradient(45deg, var(--accent-secondary), var(--accent-tertiary));
+    border: none;
+    box-shadow: 0 0 20px 4px hsla(258, 92%, 78%, 0.3);
+    transform: translateY(-3px) scale(1.03);
 }
 
 /* QR code overlay styling */
@@ -326,11 +333,11 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(17, 24, 39, 0.85);
     z-index: 1000;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     opacity: 0;
     transition: opacity 0.3s ease;
     will-change: opacity;
@@ -341,14 +348,14 @@ h1 {
 }
 
 .overlay-content {
-    background: linear-gradient(145deg, #2e3440, #3b4252);
+    background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
     padding: 30px;
     border-radius: 20px;
     max-width: 90%;
     width: 320px;
     position: relative;
-    border: 1px solid #5e81ac;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px rgba(94, 129, 172, 0.3);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px hsla(236, 92%, 78%, 0.2);
     transform: translateY(20px) scale(0.95);
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -362,7 +369,7 @@ h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #5e81ac, #88c0d0, #5e81ac);
+    background: linear-gradient(90deg, var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary));
     background-size: 200% 100%;
     animation: gradient 3s ease infinite;
 }
@@ -374,7 +381,7 @@ h1 {
 }
 
 .qr-title {
-    color: #e4e8f0;
+    color: var(--text-primary);
     font-size: 20px;
     margin: 15px 0 20px;
     text-align: center;
@@ -392,7 +399,7 @@ h1 {
     left: 25%;
     right: 25%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #5e81ac, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-tertiary), transparent);
 }
 
 .close-btn {
@@ -402,7 +409,7 @@ h1 {
     font-size: 24px;
     line-height: 1;
     cursor: pointer;
-    color: #d8dee9;
+    color: var(--text-secondary);
     transition: all 0.3s ease;
     width: 36px;
     height: 36px;
@@ -410,19 +417,19 @@ h1 {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(46, 52, 64, 0.6);
+    background: rgba(31, 41, 55, 0.6);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(136, 192, 208, 0.3);
+    border: 1px solid var(--glass-border);
     z-index: 1010;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn:hover {
     color: #fff;
-    background: #bf616a;
+    background: var(--danger);
     transform: scale(1.1) rotate(90deg);
-    border-color: #bf616a;
-    box-shadow: 0 0 15px rgba(191, 97, 106, 0.6);
+    border-color: var(--danger);
+    box-shadow: 0 0 15px hsla(3, 84%, 60%, 0.6);
 }
 
 .qr-image {
@@ -432,9 +439,9 @@ h1 {
     height: auto;
     display: block;
     margin: 15px auto 5px;
-    border: 1px solid rgba(94, 129, 172, 0.5);
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
-    background: #2e3440;
+    background: var(--bg-primary);
     padding: 12px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.2);
     transition: all 0.4s ease;
@@ -449,7 +456,7 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(94, 129, 172, 0.1) 0%, transparent 50%, rgba(94, 129, 172, 0.1) 100%);
+    background: linear-gradient(135deg, hsla(236, 92%, 78%, 0.1) 0%, transparent 50%, hsla(236, 92%, 78%, 0.1) 100%);
     pointer-events: none;
 }
 
@@ -461,48 +468,19 @@ h1 {
 
 /* Add animation for QR code appearance */
 @keyframes qr-pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.02); box-shadow: 0 10px 35px hsla(236, 92%, 78%, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.2); }
 }
 
 .overlay[style*="display: flex"] .qr-image {
-    animation: qr-pulse 2s ease-in-out infinite;
+    animation: qr-pulse 2.5s ease-in-out infinite;
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
-  .profile-card {
-    min-width: 90%;
-    max-width: 400px;
-    padding: 15px;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .profile-pic {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .social-links {
-    gap: 10px;
-  }
-  
-  .button {
-    min-width: 180px;
-    height: 44px;
-    font-size: 0.9rem;
-    padding: 0 20px;
-  }
-}
-
 @media screen and (max-width: 480px) {
   .profile-card {
-    padding: 10px;
+    padding: var(--space-lg) var(--space-md);
   }
   
   h1 {
@@ -515,35 +493,39 @@ h1 {
   }
   
   .button {
-    min-width: 160px;
-    height: 40px;
-    font-size: 0.85rem;
+    padding: 10px;
+    font-size: 0.9rem;
+    gap: 8px;
   }
   
-  .qr-popup-content {
-    width: 85%;
-    padding: 15px;
+  .overlay-content {
+    width: 90%;
+    padding: 20px;
   }
   
-  .qr-code {
-    width: 150px;
-    height: 150px;
+  .qr-image {
+    padding: 10px;
   }
 }
 
-@media screen and (max-width: 360px) {
-  h1 {
-    font-size: 1.3rem;
-  }
-  
-  .profile-pic {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .button {
-    min-width: 140px;
-    height: 36px;
-    font-size: 0.8rem;
-  }
+/* Accessibility improvements */
+.button:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--accent-primary);
+}
+
+.close-btn:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .profile-card {
+        background: var(--bg-secondary);
+    }
+    .overlay {
+        background: rgba(17, 24, 39, 0.95);
+    }
 }
